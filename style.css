@@ -10,13 +10,8 @@ body {
     height: 18rem;
     /* 288px */
     position: relative;
-}
-
-#content-row {
     display: flex;
-    flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
 }
 
 #image-container {
@@ -24,11 +19,6 @@ body {
     /* 240px */
     height: 15rem;
     /* 240px */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 50%;
     margin: 1.25rem 1.25rem 1.25rem 0.75rem;
     /* 20px top, right, bottom; 12px left */
 }
@@ -43,8 +33,6 @@ body {
 #info-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex: 1;
 }
 
 #info-title {
@@ -72,9 +60,6 @@ body {
     display: flex;
     gap: 1rem;
     /* 16px space between buttons */
-    justify-content: flex-end;
-    align-items: flex-start;
-    align-self: flex-end;
     position: absolute;
     right: 0;
     bottom: 0;
