@@ -9,6 +9,7 @@ body {
     background: #fff;
     height: 18rem;
     /* 288px */
+    position: relative;
 }
 
 #content-row {
@@ -66,27 +67,32 @@ body {
 }
 
 #button-container {
-    margin: 1.25rem;
-    /* 20px from border on all sides */
-    margin-top: 1.5rem;
-    /* 24px, keeps previous vertical spacing if needed */
+    margin: 1.25rem 0.75rem 1.25rem 1.25rem;
+    /* 20px top, 12px left, 20px bottom, 20px right */
     display: flex;
     gap: 1rem;
     /* 16px space between buttons */
     justify-content: flex-end;
     align-items: flex-start;
     align-self: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 button {
     border-radius: 1rem;
     /* 16px */
     padding: 0.8125rem;
+    /* 13px */
+    background: #dfdee2;
+    border-color: #dfdee2;
 }
 
 button:hover,
 button:focus {
     background: #ff0000;
+    border-color: #000000;
 }
 
 button:active {
@@ -94,6 +100,6 @@ button:active {
 }
 
 button:focus:not(:hover) {
-    background: #fff;
-    border-color: #000;
+    background: #dfdee2;
+    border-color: #dfdee2;
 }

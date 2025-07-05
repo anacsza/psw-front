@@ -1,7 +1,7 @@
 document.getElementById('edit-button').addEventListener('click', function () {
-    alert('Button 1 clicked!');
+    alert('Alterado');
 });
 
 document.getElementById('delete-button').addEventListener('click', function () {
-    alert('Button 2 clicked!');
+    alert('Excluído');
 });
