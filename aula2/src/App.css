@@ -1,130 +1,86 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html {
+  font-size: 14px;
 }
 
 .Body {
-    font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 .Main-container {
-    border: solid #000000;
-    border-radius: 2rem;
-    /* 32px */
-    background: #fff;
-    height: 18rem;
-    /* 288px */
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    /* testar box sizing*/
+  border: solid #000000;
+  border-radius: 2rem;
+  background: #fff;
+  height: 18rem;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
 }
 
 .Image-container {
-    width: 15rem;
-    /* 240px */
-    height: 15rem;
-    /* 240px */
-    margin: 1.25rem 1.25rem 1.25rem 0.75rem;
-    /* 20px top, right, bottom; 12px left */
+  width: 15rem;
+  height: 15rem;
+  margin: 1.25rem 1.25rem 1.25rem 0.75rem;
 }
 
 .Image-container-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .Info-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .Info-title {
-    font-size: 1rem;
-    /* 16px */
-    margin-top: 1.25rem;
-    /* 20px from border */
-    font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  font-weight: bold;
 }
 
-.Info-description {
-    font-size: 0.825rem;
-    /* 13.2px */
-    margin-top: 0.01rem;
-}
-
+.Info-description,
 .Info-price {
-    font-size: 0.825rem;
-    margin-top: 0.01rem;
+  font-size: 0.825rem;
+  margin-top: 0.01rem;
 }
 
 .Button-container {
-    margin: 1.25rem 0.75rem 1.25rem 1.25rem;
-    /* 20px top, 12px left, 20px bottom, 20px right */
-    display: flex;
-    gap: 1rem;
-    /* 16px space between buttons */
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  margin: 1.25rem 0.75rem 1.25rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .Button {
-    border-radius: 1rem;
-    /* 16px */
-    padding: 0.8125rem;
-    /* 13px */
-    background: #dfdee2;
-    border-color: #dfdee2;
+  border-radius: 1rem;
+  padding: 0.8125rem;
+  background: #dfdee2;
+  border-color: #dfdee2;
 }
 
 .Button:hover,
 .Button:focus {
-    background: #ff0000;
-    border-color: #000000;
+  background: #ff0000;
+  border-color: #000000;
 }
 
 .Button:active {
-    background: #b30000;
+  background: #b30000;
 }
 
 .Button:focus:not(:hover) {
-    background: #dfdee2;
-    border-color: #dfdee2;
+  background: #dfdee2;
+  border-color: #dfdee2;
+}
+
+.Input {
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  width: 12.5rem;
 }

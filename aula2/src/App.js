@@ -5,6 +5,12 @@ import { DataContext } from './DataContext';
 function App() {
 
   const data = React.useContext(DataContext);
+  const [filteredProducts, setFilteredProducts] = React.useState(data);
+  const [filter, setFilterProducts] = React.useState('');
+
+  React.useEffect(() => {
+    setFilteredProducts(data);
+  }, [data]);
 
   console.log(data);
 
@@ -16,9 +22,19 @@ function App() {
     alert('Excluído');
   };
 
+  const handleFilter = () => {
+    setFilteredProducts(
+      data.filter(item =>
+        String(item.id).includes(filter)
+      )
+    );
+  };
+
   return (
     <main>
-      {data.map(item => (
+      <input type="text" className="Input" placeholder="Filtrar pelo código do produto" value={filter} onChange={product => setFilterProducts(product.target.value)}></input>
+      <button className="Button" onClick={handleFilter}>Filtrar</button>
+      {filteredProducts.map(item => (
         <div key={item.id} className="Main-container">
           <figure className="Image-container">
             <img className="Image-container-img" src={item.pictureUrl} alt={item.name}></img>
