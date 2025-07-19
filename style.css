@@ -12,6 +12,7 @@ body {
     position: relative;
     display: flex;
     align-items: flex-start;
+    /* testar box sizing*/
 }
 
 #image-container {
