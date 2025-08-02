@@ -1,5 +1,5 @@
 import './App.css';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { DataContext } from './DataContext';
 
 function App() {
@@ -7,6 +7,10 @@ function App() {
   const data = useContext(DataContext);
   const [filteredProducts, setFilteredProducts] = useState(data);
   const [filter, setFilterProducts] = useState('');
+
+  useEffect(() => {
+    setFilteredProducts(data);
+  }, [data]);
 
   console.log(data);
 

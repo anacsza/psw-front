@@ -1,0 +1,86 @@
+html {
+  font-size: 14px;
+}
+
+.Body {
+  font-family: Helvetica, sans-serif;
+}
+
+.Main-container {
+  border: solid #000000;
+  border-radius: 2rem;
+  background: #fff;
+  height: 18rem;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.Image-container {
+  width: 15rem;
+  height: 15rem;
+  margin: 1.25rem 1.25rem 1.25rem 0.75rem;
+}
+
+.Image-container-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.Info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Info-title {
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  font-weight: bold;
+}
+
+.Info-description,
+.Info-price {
+  font-size: 0.825rem;
+  margin-top: 0.01rem;
+}
+
+.Button-container {
+  margin: 1.25rem 0.75rem 1.25rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.Button {
+  border-radius: 1rem;
+  padding: 0.8125rem;
+  background: #dfdee2;
+  border-color: #dfdee2;
+}
+
+.Button:hover,
+.Button:focus {
+  background: #ff0000;
+  border-color: #000000;
+}
+
+.Button:active {
+  background: #b30000;
+}
+
+.Button:focus:not(:hover) {
+  background: #dfdee2;
+  border-color: #dfdee2;
+}
+
+.Input {
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  width: 12.5rem;
+}
