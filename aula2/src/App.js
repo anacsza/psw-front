@@ -8,10 +8,6 @@ function App() {
   const [filteredProducts, setFilteredProducts] = React.useState(data);
   const [filter, setFilterProducts] = React.useState('');
 
-  React.useEffect(() => {
-    setFilteredProducts(data);
-  }, [data]);
-
   console.log(data);
 
   const handleEdit = () => {
@@ -42,7 +38,7 @@ function App() {
           <section className="Info-container">
             <h1 className="Info-title">({item.id}) {item.name}</h1>
             <p className="Info-description">{item.category}</p>
-            <p className="Info-price">{item.price}</p>
+            <p className="Info-price">R${item.price}</p>
             <nav className="Button-container">
               <button className="Button" onClick={handleEdit}>Editar</button>
               <button className="Button" onClick={handleDelete}>Excluir</button>
