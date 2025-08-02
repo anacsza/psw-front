@@ -84,3 +84,8 @@ html {
   border-radius: 0.25rem;
   width: 12.5rem;
 }
+
+.ProductsMain {
+  height: 100%;
+  overflow-y: scroll;
+}

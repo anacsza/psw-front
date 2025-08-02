@@ -1,6 +1,9 @@
 
 import './Layout.css';
 import { Link, Outlet } from 'react-router-dom';
+import { Product } from '../../types/products/Product';
+
+let cachedResponse: Product[] = [];
 
 export function Layout() {
     return (
@@ -9,6 +12,7 @@ export function Layout() {
                 <nav>
                     <ul>
                         <li><Link to="/produtos">Produtos</Link></li>
+                        <li><Link to="/produtos/novo">Novo Produto</Link></li>
                     </ul>
                 </nav>
             </aside>
@@ -25,9 +29,17 @@ export function Layout() {
 }
 
 export async function loader() {
+    if (cachedResponse.length > 0) {
+        return cachedResponse;
+    }
     const response = await fetch('/data.json')
         .then(response => response.json())
         .catch(() => []);
     console.log(response);
+    cachedResponse = response;
     return response;
+}
+
+export function addCache(newProducts: Product[]) {
+  cachedResponse = newProducts;
 }

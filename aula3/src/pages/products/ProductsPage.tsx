@@ -27,7 +27,7 @@ function ProductsPage() {
   }
 
   return (
-    <main>
+    <main className="ProductsMain">
       <input type="text" className="Input" placeholder="Filtrar pelo código do produto" value={filter} onChange={e => setFilterProducts(e.target.value)} />
       <button className="Button" onClick={handleFilter}>Filtrar</button>
       <ProductList products={filteredProducts} onEdit={handleEdit} onDelete={handleDelete} />
