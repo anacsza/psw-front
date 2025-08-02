@@ -1,6 +1,6 @@
 import './App.css';
 import { useContext, useState, useEffect } from 'react';
-import { DataContext } from './DataContext';
+import { DataContext } from '../../context/DataContext';
 
 function App() {
 

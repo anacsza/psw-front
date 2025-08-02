@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, ReactNode } from 'react';
+import { Product } from '../types/Product';
 
-type DataType = any[];
+type DataType = Product[];
 
 export const DataContext = createContext<DataType>([]);
 
