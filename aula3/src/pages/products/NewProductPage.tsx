@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { Product } from '../../types/products/Product';
 import { NewProduct } from '../../components/products/NewProduct';
 import { addCache } from '../../components/layout/Layout';
 
 
 function NewProductPage() {
+  const navigate = useNavigate();
   const data = useLoaderData<Product[]>();
   const [product, setProduct] = useState<Product>({
     id: 0,
@@ -26,9 +27,11 @@ function NewProductPage() {
     e.preventDefault();
     addCache([...data, product]);
     alert('Produto criado!');
+    navigate('/produtos');
   }
 
   function handleCancel() {
+    navigate('/produtos');
   }
 
   return (
@@ -36,7 +39,7 @@ function NewProductPage() {
       <h2>Novo Produto</h2>
       <form onSubmit={handleSubmit} className="ProductForm">
         <NewProduct product={product} onSubmit={handleSubmit} onChange={handleChange} />
-        <button onClick={handleCancel} className="Button">Cancelar</button>
+        <button type="button" onClick={handleCancel} className="Button">Cancelar</button>
       </form>
     </main>
   );
