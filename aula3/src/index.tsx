@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/products/App';
+import Products from './pages/Products/Products';
 import reportWebVitals from './reportWebVitals';
-import { DataProvider } from './context/DataContext';
+import { DataProvider } from './context/products/DataContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <DataProvider>
-      <App />
+      <Products />
     </DataProvider>
   </React.StrictMode>
 );
