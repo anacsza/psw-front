@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../../types/products/Product';
 import { NewProduct } from '../../components/products/NewProduct';
-import { saveProduct } from '../../components/layout/Layout';
+import { editProduct, saveProduct } from '../../components/layout/Layout';
 
 
-function NewProductPage() {
+function EditProductPage() {
   const navigate = useNavigate();
   const data = useLoaderData<Product[]>();
   const [product, setProduct] = useState<Product>({
@@ -16,6 +16,7 @@ function NewProductPage() {
     category: '',
     pictureUrl: ''
   });
+  const { id } = useParams<{ id: string }>();
 
   function handleChange(e: any) {
     const { name, value } = e.target;
@@ -25,8 +26,8 @@ function NewProductPage() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    saveProduct(product);
-    alert('Produto criado!');
+    editProduct(id, product);
+    alert('Produto alterado!');
     navigate('/produtos');
   }
 
@@ -44,4 +45,4 @@ function NewProductPage() {
   );
 }
 
-export default NewProductPage;
+export default EditProductPage;

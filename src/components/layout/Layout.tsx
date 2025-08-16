@@ -37,7 +37,7 @@ export async function loader() {
         cachedResponse = [];
         const response = await axios.get('http://localhost:3000/produtos', {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbInByb2R1Y3RzOnJlYWQiLCJwcm9kdWN0czpjcmVhdGUiLCJwcm9kdWN0czpkZWxldGUiLCJwcm9kdWN0czp1cGRhdGUiXSwiaWF0IjoxNzU1MzU5OTIxLCJleHAiOjE3NTUzNjA4MjF9.YND4BeZQP-L6KmntT3GIZr5W1ioF0J6mrY5m2YzNdpM'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbInByb2R1Y3RzOnJlYWQiLCJwcm9kdWN0czpjcmVhdGUiLCJwcm9kdWN0czpkZWxldGUiLCJwcm9kdWN0czp1cGRhdGUiXSwiaWF0IjoxNzU1MzY0MDM3LCJleHAiOjE3NTUzNjQ5Mzd9.QiYOMfNNVA8rrpv-Caou-cmW3BEjsO4z9Y-iGhg0zU0'
             }
         });
         if (response.status === 200) {
@@ -50,6 +50,38 @@ export async function loader() {
     }
 }
 
-export function addCache(newProducts: Product[]) {
-  cachedResponse = newProducts;
+export async function saveProduct(newProduct: Product) {
+    console.log('Salvando produto:', newProduct);
+    const response = await axios.post('http://localhost:3000/produtos',
+        newProduct,
+        {
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbInByb2R1Y3RzOnJlYWQiLCJwcm9kdWN0czpjcmVhdGUiLCJwcm9kdWN0czpkZWxldGUiLCJwcm9kdWN0czp1cGRhdGUiXSwiaWF0IjoxNzU1MzY0MDM3LCJleHAiOjE3NTUzNjQ5Mzd9.QiYOMfNNVA8rrpv-Caou-cmW3BEjsO4z9Y-iGhg0zU0',
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+    if (response.status === 200 || response.status === 201) {
+        cachedResponse.push(newProduct);
+    }
+}
+
+export async function editProduct(id: any, editedProduct: Product) {
+    console.log('Editando produto:', editedProduct, id);
+    editedProduct.id = id as number;
+    const response = await axios.put(`http://localhost:3000/produtos/${id}`,
+        editedProduct,
+        {
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbInByb2R1Y3RzOnJlYWQiLCJwcm9kdWN0czpjcmVhdGUiLCJwcm9kdWN0czpkZWxldGUiLCJwcm9kdWN0czp1cGRhdGUiXSwiaWF0IjoxNzU1MzY0MDM3LCJleHAiOjE3NTUzNjQ5Mzd9.QiYOMfNNVA8rrpv-Caou-cmW3BEjsO4z9Y-iGhg0zU0',
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+    if (response.status === 200 || response.status === 201) {
+        console.log('Produto editado com sucesso:', editedProduct);
+        cachedResponse = cachedResponse.map(product =>
+            product.id === editedProduct.id ? response.data : product
+        );
+    }
 }
