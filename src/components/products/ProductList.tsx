@@ -3,8 +3,8 @@ import { Product } from '../../types/products/Product';
 
 export function ProductList({ products, onEdit, onDelete }: {
     products: Product[];
-    onEdit: () => void;
-    onDelete: () => void;
+    onEdit: (product: Product) => void;
+    onDelete: (productId: number) => void;
 }) {
     return (
         <>
@@ -18,8 +18,8 @@ export function ProductList({ products, onEdit, onDelete }: {
                         <p className="Info-description">{item.category}</p>
                         <p className="Info-price">R${item.price}</p>
                         <nav className="Button-container">
-                            <button className="Button" onClick={onEdit}>Editar</button>
-                            <button className="Button" onClick={onDelete}>Excluir</button>
+                            <button className="Button" onClick={() => onEdit(item)}>Editar</button>
+                            <button className="Button" onClick={() => onDelete(item.id)}>Excluir</button>
                         </nav>
                     </section>
                 </div>
