@@ -7,6 +7,8 @@ function ProductsPage() {
   const data = useLoaderData<Product[]>();
   const [filter, setFilterProducts] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(data);
+  // Debounce timer
+  const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null);
 
   console.log(data);
 
@@ -18,18 +20,31 @@ function ProductsPage() {
     alert('Excluído');
   }
 
-  function handleFilter() {
-    setFilteredProducts(
-      data.filter((item: Product) =>
-        String(item.id).includes(filter)
-      )
-    );
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setFilterProducts(value);
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
+    const timer = setTimeout(() => {
+      setFilteredProducts(
+        data.filter((item: Product) =>
+          String(item.id).includes(value)
+        )
+      );
+    }, 500);
+    setDebounceTimer(timer);
   }
 
   return (
     <main className="ProductsMain">
-      <input type="text" className="Input" placeholder="Filtrar pelo código do produto" value={filter} onChange={e => setFilterProducts(e.target.value)} />
-      <button className="Button" onClick={handleFilter}>Filtrar</button>
+      <input
+        type="text"
+        className="Input"
+        placeholder="Filtrar pelo código do produto"
+        value={filter}
+        onChange={handleInputChange}
+      />
       <ProductList products={filteredProducts} onEdit={handleEdit} onDelete={handleDelete} />
     </main>
   );
