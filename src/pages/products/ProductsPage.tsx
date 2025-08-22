@@ -19,11 +19,7 @@ function ProductsPage() {
   }
 
   async function handleDelete(productId: number) {
-    const response = await axios.delete(`http://localhost:3000/produtos/${productId}`, {
-        headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbInByb2R1Y3RzOnJlYWQiLCJwcm9kdWN0czpjcmVhdGUiLCJwcm9kdWN0czpkZWxldGUiLCJwcm9kdWN0czp1cGRhdGUiXSwiaWF0IjoxNzU1MzY0MDM3LCJleHAiOjE3NTUzNjQ5Mzd9.QiYOMfNNVA8rrpv-Caou-cmW3BEjsO4z9Y-iGhg0zU0'
-        }
-    });
+    const response = await axios.delete(`http://localhost:3001/api/product/${productId}`);
     if (response.status === 204 || response.status === 200) {
         alert(`Produto ${productId} excluído`);
         setFilteredProducts(filteredProducts.filter(product => product.id !== productId));
