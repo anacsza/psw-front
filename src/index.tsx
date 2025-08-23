@@ -5,15 +5,17 @@ import { Layout, loader as layoutLoader } from './components/layout/Layout';
 import ProductsPage from './pages/products/ProductsPage';
 import NewProductPage from './pages/products/NewProductPage';
 import EditProductPage from './pages/products/EditProductPage';
+import ImportCsvPage from './pages/products/ImportCsvPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
-      { path: 'produtos', element: <ProductsPage />, loader: layoutLoader },
-      { path: 'produtos/novo', element: <NewProductPage />, loader: layoutLoader },
-      { path: 'produtos/:id', element: <EditProductPage />, loader: layoutLoader }
+  { path: 'produtos', element: <ProductsPage />, loader: layoutLoader },
+  { path: 'produtos/novo', element: <NewProductPage />, loader: layoutLoader },
+  { path: 'produtos/:id', element: <EditProductPage />, loader: layoutLoader },
+  { path: 'produtos/importar-csv', element: <ImportCsvPage /> }
     ]
   }
 ]);

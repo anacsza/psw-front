@@ -14,6 +14,7 @@ export function Layout() {
                     <ul>
                         <li><Link to="/produtos">Produtos</Link></li>
                         <li><Link to="/produtos/novo">Novo Produto</Link></li>
+                        <li><Link to="/produtos/importar-csv">Importar CSV</Link></li>
                     </ul>
                 </nav>
             </aside>

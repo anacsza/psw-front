@@ -8,11 +8,8 @@ function ProductsPage() {
   const data = useLoaderData<Product[]>();
   const [filter, setFilterProducts] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(data);
-  // Debounce timer
   const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
-
-  console.log(data);
 
   function handleEdit(product: Product) {
     navigate(`/produtos/${product.id}`);
@@ -21,8 +18,8 @@ function ProductsPage() {
   async function handleDelete(productId: number) {
     const response = await axios.delete(`http://localhost:3001/api/product/${productId}`);
     if (response.status === 204 || response.status === 200) {
-        alert(`Produto ${productId} excluído`);
-        setFilteredProducts(filteredProducts.filter(product => product.id !== productId));
+      alert(`Produto ${productId} excluído`);
+      setFilteredProducts(filteredProducts.filter(product => product.id !== productId));
     }
   }
 
