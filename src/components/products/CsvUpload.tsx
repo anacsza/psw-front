@@ -21,6 +21,12 @@ const CsvUpload: React.FC<CsvUploadProps> = ({ onProductsLoaded }) => {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    const ext = file.name.split('.').pop()?.toLowerCase();
+    if (ext !== 'csv') {
+      alert('Extensão de arquivo inválida');
+      e.target.value = '';
+      return;
+    }
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,

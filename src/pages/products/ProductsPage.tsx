@@ -16,6 +16,8 @@ function ProductsPage() {
   }
 
   async function handleDelete(productId: any) {
+    const confirmDelete = window.confirm('Tem certeza que deseja excluir este produto?');
+    if (!confirmDelete) return;
     const response = await axios.delete(`http://localhost:3001/api/product/${productId}`);
     if (response.status === 204 || response.status === 200) {
       alert(`Produto ${productId} excluído`);

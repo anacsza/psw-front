@@ -8,7 +8,9 @@ export function ProductList({ products, onEdit, onDelete }: {
 }) {
     return (
         <>
-            {products.map(item => (
+            {products.length === 0 ? (
+                <p>Nenhum produto encontrado.</p>
+            ) : products.map(item => (
                 <div key={item.id} className="Main-container">
                     <figure className="Image-container">
                         <img className="Image-container-img" src={item.pictureUrl} alt={item.name} />

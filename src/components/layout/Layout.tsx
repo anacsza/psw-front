@@ -53,7 +53,8 @@ export async function saveProduct(newProduct: Product) {
         newProduct
     );
     if (response.status === 200 || response.status === 201) {
-        cachedResponse.push(newProduct);
+        cachedResponse.push(response.data);
+        console.log('Produto salvo com sucesso:', response);
         alert('Produto criado!');
     }
 }
