@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../../types/products/Product';
 import { NewProduct } from '../../components/products/NewProduct';
-import { editProduct, saveProduct } from '../../components/layout/Layout';
+import { editProduct } from '../../components/layout/Layout';
 
 
 function EditProductPage() {
   const navigate = useNavigate();
   const data = useLoaderData<Product[]>();
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(data);
   const [product, setProduct] = useState<Product>({
     id: 0,
     name: '',
@@ -20,16 +21,16 @@ function EditProductPage() {
 
   function handleChange(e: any) {
     const { name, value } = e.target;
-    console.log(`Campo alterado: ${name}, Novo valor: ${value}`);
     setProduct(prev => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     product.id = null;
-    console.log('Produto a ser editado:', product);
-    console.log('ID do produto a ser editado:', id);
-    editProduct(id, product);
+    const productEdited = await editProduct(id, product);
+    if (productEdited) {
+      setFilteredProducts(prev => prev.map(prod => prod.id === productEdited.id ? productEdited : prod));
+    }
     alert('Produto alterado!');
     navigate('/produtos');
   }

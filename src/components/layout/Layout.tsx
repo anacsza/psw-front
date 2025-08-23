@@ -47,28 +47,31 @@ export async function loader() {
     }
 }
 
-export async function saveProduct(newProduct: Product) {
-    console.log('Salvando produto:', newProduct);
+export async function saveProduct(newProduct: Product) : Promise<Product> {
     const response = await axios.post('http://localhost:3001/api/product',
         newProduct
     );
     if (response.status === 200 || response.status === 201) {
         cachedResponse.push(response.data);
-        console.log('Produto salvo com sucesso:', response);
         alert('Produto criado!');
+        return response.data;
     }
+    return null as unknown as Product;
 }
 
-export async function editProduct(id: any, editedProduct: Product) {
-    console.log('Editando produto:', editedProduct, id);
+export async function editProduct(id: any, editedProduct: Product) : Promise<Product> {
     editedProduct.id = id as number;
     const response = await axios.put(`http://localhost:3001/api/product/${id}`,
         editedProduct
     );
     if (response.status === 200 || response.status === 201) {
-        console.log('Produto editado com sucesso:', editedProduct);
-        cachedResponse = cachedResponse.map(product =>
-            product.id === editedProduct.id ? response.data : product
-        );
+        cachedResponse.forEach(product => {
+            if (product.id === editedProduct.id) {
+                product = editedProduct;
+            }
+        });
+        return response.data;
     }
+    return null as unknown as Product;
+
 }

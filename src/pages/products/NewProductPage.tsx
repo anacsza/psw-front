@@ -8,6 +8,7 @@ import { saveProduct } from '../../components/layout/Layout';
 function NewProductPage() {
   const navigate = useNavigate();
   const data = useLoaderData<Product[]>();
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(data);
   const [product, setProduct] = useState<Product>({
     id: 0,
     name: '',
@@ -19,15 +20,16 @@ function NewProductPage() {
 
   function handleChange(e: any) {
     const { name, value } = e.target;
-    console.log(`Campo alterado: ${name}, Novo valor: ${value}`);
     setProduct(prev => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     product.id = null;
-    console.log('Produto a ser salvo:', product);
-    saveProduct(product);
+    const newProduct = await saveProduct(product);
+    if (newProduct) {
+      setFilteredProducts([...filteredProducts, newProduct]);
+    }
     navigate('/produtos');
   }
 
