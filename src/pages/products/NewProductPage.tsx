@@ -25,8 +25,9 @@ function NewProductPage() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    product.id = null;
+    console.log('Produto a ser salvo:', product);
     saveProduct(product);
-    alert('Produto criado!');
     navigate('/produtos');
   }
 

@@ -15,7 +15,7 @@ function ProductsPage() {
     navigate(`/produtos/${product.id}`);
   }
 
-  async function handleDelete(productId: number) {
+  async function handleDelete(productId: any) {
     const response = await axios.delete(`http://localhost:3001/api/product/${productId}`);
     if (response.status === 204 || response.status === 200) {
       alert(`Produto ${productId} excluído`);

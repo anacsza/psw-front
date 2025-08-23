@@ -4,7 +4,7 @@ import { Product } from '../../types/products/Product';
 export function ProductList({ products, onEdit, onDelete }: {
     products: Product[];
     onEdit: (product: Product) => void;
-    onDelete: (productId: number) => void;
+    onDelete: (productId: any) => void;
 }) {
     return (
         <>

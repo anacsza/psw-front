@@ -26,6 +26,9 @@ function EditProductPage() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    product.id = null;
+    console.log('Produto a ser editado:', product);
+    console.log('ID do produto a ser editado:', id);
     editProduct(id, product);
     alert('Produto alterado!');
     navigate('/produtos');
