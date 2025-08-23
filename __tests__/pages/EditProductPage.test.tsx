@@ -16,12 +16,17 @@ jest.mock('../../src/components/layout/Layout', () => ({
 }));
 
 describe('EditProductPage', () => {
-  test('renders form and edits product', async () => {
+  test('when open edit page should contains the fields', async () => {
     render(<EditProductPage />);
     fireEvent.change(screen.getByLabelText(/nome/i), { target: { value: 'Produto Editado' } });
     fireEvent.change(screen.getByLabelText(/descrição/i), { target: { value: 'Nova descrição' } });
     fireEvent.change(screen.getByLabelText(/preço/i), { target: { value: '199.99' } });
     fireEvent.change(screen.getByLabelText(/categoria/i), { target: { value: 'Nova Categoria' } });
     fireEvent.change(screen.getByLabelText(/url da imagem/i), { target: { value: 'http://imagem.com/img2.png' } });
+    expect(await screen.findByDisplayValue(/Produto Editado/i)).toBeInTheDocument();
+    expect(await screen.findByDisplayValue(/Nova descrição/i)).toBeInTheDocument();
+    expect(await screen.findByDisplayValue(/199.99/i)).toBeInTheDocument();
+    expect(await screen.findByDisplayValue(/Nova Categoria/i)).toBeInTheDocument();
+    expect(await screen.findByDisplayValue(/http:\/\/imagem\.com\/img2\.png/i)).toBeInTheDocument();
   });
 });
